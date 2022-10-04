@@ -23,3 +23,8 @@ def multiply_numbers(number):
 
 
 print(multiply_numbers(users_number))
+
+list_numbers = []
+for num in range(1, users_number + 1):
+    list_numbers.append(multiply_numbers(num))
+print(list_numbers)
