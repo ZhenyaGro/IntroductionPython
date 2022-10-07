@@ -35,7 +35,7 @@ def create_polynomial():
 
 
 def create_file(array):
-    polynomial_file = open('Seminar4/polynomial.txt', 'a')
+    polynomial_file = open('Seminar4/Polynomial.txt', 'a')
 
     for i in range(0, len(polynomial_array)):
         if i == len(polynomial_array) - 1:
