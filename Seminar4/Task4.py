@@ -8,7 +8,7 @@ from random import randint
 def create_polynomial():
 
     def random_number():
-        return randint(0, 2)  # 101
+        return randint(0, 101)  # 101
 
     k = int(input('Введите k: '))
     result = []
