@@ -21,10 +21,31 @@ def create_polynomial():
         else:
             result.append(f'{current_number} * x ** {-i}')
 
-    result.append(f'{random_number()} * x')
-    result.append(f'{random_number()}')
+    current_number = random_number()
+    if current_number == 1:
+        result.append('x')
+    elif current_number != 0:
+        result.append(f'{current_number} * x')
+
+    current_number = random_number()
+    if current_number != 0:
+        result.append(f'{current_number}')
 
     return result
 
 
-print(create_polynomial())
+def create_file(array):
+    polynomial_file = open('Seminar4/polynomial.txt', 'a')
+
+    for i in range(0, len(polynomial_array)):
+        if i == len(polynomial_array) - 1:
+            polynomial_file.write(f'{polynomial_array[i]} = 0')
+            polynomial_file.write('\n')
+            return
+
+        polynomial_file.write(f'{polynomial_array[i]} + ')
+
+
+polynomial_array = create_polynomial()
+print(polynomial_array)
+create_file(polynomial_array)
