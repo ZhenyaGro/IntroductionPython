@@ -3,6 +3,7 @@
 def dictionary_from_file(file_name):
     file = open(f'Seminar4/{file_name}', 'r')
     array = file.read().split(' + ')
+    file.close()
     last_two = array[-1].split(' = ')
     array.pop()
     array.append(last_two[0])
@@ -76,6 +77,7 @@ def create_file(dictionary):
         j += 1
 
     file.write(' = 0')
+    file.close()
 
 
 create_file(result)

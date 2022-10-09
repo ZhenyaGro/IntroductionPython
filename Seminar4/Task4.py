@@ -41,6 +41,7 @@ def create_file(array):
         if i == len(polynomial_array) - 1:
             polynomial_file.write(f'{polynomial_array[i]} = 0')
             polynomial_file.write('\n')
+            polynomial_file.close()
             return
 
         polynomial_file.write(f'{polynomial_array[i]} + ')
