@@ -27,6 +27,7 @@ def pvp(candy):
     else:
         first_player = False
 
+    can_get = 28
     while candy != 0:
         if first_player == True:
             current_player = 1
@@ -36,19 +37,18 @@ def pvp(candy):
         print(
             f'\nХод Игрока {current_player}\nТекущее количество конфет: {candy}')
 
-        if candy >= 28:
-            take_candy = int(input('Заберите от 1 до 28 конфет: '))
-            while take_candy < 1 or take_candy > 28:
-                print('Некорректное количество конфет. Попробуйте еще раз')
-                take_candy = int(input('Заберите от 1 до 28 конфет: '))
-        else:
-            take_candy = int(input(f'Заберите от 1 до {candy} конфет: '))
-            while take_candy < 1 or take_candy > candy:
-                print('Некорректное количество конфет. Попробуйте еще раз')
-                take_candy = int(input(f'Заберите от 1 до {candy} конфет: '))
+        if candy < 28:
+            can_get = candy
+
+        take_candy = int(input(f'Заберите от 1 до {can_get} конфет: '))
+        while take_candy < 1 or take_candy > can_get:
+            print('Некорректное количество конфет. Попробуйте еще раз')
+            take_candy = int(input(f'Заберите от 1 до {can_get} конфет: '))
 
         candy -= take_candy
         first_player = not first_player
+
+    print(f'\nВыиграл Игрок {current_player}')
 
     return
 
