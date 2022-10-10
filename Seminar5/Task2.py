@@ -9,14 +9,15 @@ import time
 
 def choose_mode():
     game_mode = input(
-        'Выбор режима игры.\n1 - Против игрока\n2 - Против бота\nРежим: ')
+        'Выбор режима игры.\n1 - Против игрока 👥\n2 - Против Компьютера 🤖\nРежим: ')
     if game_mode != '1' and game_mode != '2':
-        print('Выбран некорректный режим')
+        print('Выбран некорректный режим. Запущена игра против Компьютера 🤖')
+        return '2'
 
     return game_mode
 
 
-count_candy = 2021
+count_candy = 120
 
 
 def game(mode, candy):
@@ -24,17 +25,18 @@ def game(mode, candy):
     def show_player(mode, current_player, is_first_move=False):
         if is_first_move:
             if mode == '2' and current_player == 2:
-                print(f'Первым ходит: Компьютер')
+                print(f'Первым ходит: Компьютер 🤖')
                 return 2
             else:
                 print(f'Первым ходит: Игрок {current_player}')
         else:
             if mode == '2' and current_player == 2:
-                print(f'\nХодит Компьютер\nТекущее количество конфет: {candy}')
+                print(
+                    f'\nХодит Компьютер 🤖\nТекущее количество конфет: {candy} 🍬')
                 return 2
             else:
                 print(
-                    f'\nХодит Игрок {current_player}\nТекущее количество конфет: {candy}')
+                    f'\nХодит Игрок {current_player}\nТекущее количество конфет: {candy} 🍬')
 
     print(f'Начальное количество конфет: {candy}')
     current_player = randint(1, 2)
@@ -63,15 +65,15 @@ def game(mode, candy):
     def bot_move(candy, can_get):
         time.sleep(1)
         if candy == can_get:
-            print(f'Компьютер забрал {candy} конфет')
+            print(f'Компьютер забрал {candy} 🍬')
             return candy
         bot_take = candy % (can_get + 1)
         if bot_take != 0:
-            print(f'Компьютер забрал {bot_take} конфет')
+            print(f'Компьютер забрал {bot_take} 🍬')
             return bot_take
         else:
             bot_take = randint(1, can_get)
-            print(f'Компьютер забрал {bot_take} конфет')
+            print(f'Компьютер забрал {bot_take} 🍬')
             return bot_take
 
     max_get = 28
@@ -89,9 +91,9 @@ def game(mode, candy):
         is_first_player = not is_first_player
 
     if mode == '2' and is_first_player:
-        print(f'\nВыиграл Компьютер')
+        print(f'\nВыиграл Компьютер! Все конфеты достаются ему! 🍬 🤖 🍬🍬')
     else:
-        print(f'\nВыиграл Игрок {current_player}')
+        print(f'\nВыиграл Игрок {current_player}! Все конфеты Ваши! 🍬 🙂 🍬🍬')
 
     return
 
