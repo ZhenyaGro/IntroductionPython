@@ -18,27 +18,32 @@ def choose_mode():
 count_candy = 120
 
 
-def pvp(candy):
-    print(f'Количество конфет: {candy}')
+def game(mode, candy):
+
+    def show_player(mode, current_player, is_first_move=False):
+        if is_first_move:
+            if mode == '2' and current_player == 2:
+                print(f'Первым ходит: Компьютер')
+                return 2
+            else:
+                print(f'Первым ходит: Игрок {current_player}')
+        else:
+            if mode == '2' and current_player == 2:
+                print(f'\nХодит Компьютер\nТекущее количество конфет: {candy}')
+                return 2
+            else:
+                print(
+                    f'\nХодит Игрок {current_player}\nТекущее количество конфет: {candy}')
+
+    print(f'Начальное количество конфет: {candy}')
     current_player = randint(1, 2)
-    print(f'Первым ходит: Игрок {current_player}')
-    if current_player == 1:
-        first_player = True
-    else:
-        first_player = False
+    show_player(mode, current_player, True)
 
-    can_get = 28
-    while candy != 0:
-        if first_player == True:
-            current_player = 1
-        elif first_player == False:
-            current_player = 2
+    is_first_player = True if current_player == 1 else False
 
-        print(
-            f'\nХод Игрока {current_player}\nТекущее количество конфет: {candy}')
-
-        if candy < 28:
-            can_get = candy
+    def make_move(current_candy, can_get):
+        if current_candy < 28:
+            can_get = current_candy
 
         try:
             take_candy = int(input(f'Заберите от 1 до {can_get} конфет: '))
@@ -52,10 +57,25 @@ def pvp(candy):
             except:
                 take_candy = 29
 
-        candy -= take_candy
-        first_player = not first_player
+        return take_candy
+
+    max_get = 28
+    while candy != 0:
+        current_player = 1 if is_first_player == True else 2
+        show_player(mode, current_player)
+        candy -= make_move(candy, max_get)
+
+        is_first_player = not is_first_player
 
     print(f'\nВыиграл Игрок {current_player}')
+
+    return
+
+
+# ---------------------------------------
+
+
+def pvp(candy):
 
     return
 
@@ -65,7 +85,4 @@ def pve(candy):
 
 
 game_mode = choose_mode()
-if game_mode == '1':
-    pvp(count_candy)
-if (game_mode == '2'):
-    pve(count_candy)
+game(game_mode, count_candy)
