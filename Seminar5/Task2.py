@@ -16,7 +16,7 @@ def choose_mode():
     return game_mode
 
 
-count_candy = 120
+count_candy = 2021
 
 
 def game(mode, candy):
