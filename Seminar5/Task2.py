@@ -40,10 +40,17 @@ def pvp(candy):
         if candy < 28:
             can_get = candy
 
-        take_candy = int(input(f'Заберите от 1 до {can_get} конфет: '))
+        try:
+            take_candy = int(input(f'Заберите от 1 до {can_get} конфет: '))
+        except:
+            take_candy = 29
         while take_candy < 1 or take_candy > can_get:
             print('Некорректное количество конфет. Попробуйте еще раз')
-            take_candy = int(input(f'Заберите от 1 до {can_get} конфет: '))
+            try:
+                take_candy = int(
+                    input(f'Заберите от 1 до {can_get} конфет: '))
+            except:
+                take_candy = 29
 
         candy -= take_candy
         first_player = not first_player
