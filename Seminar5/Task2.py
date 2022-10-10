@@ -4,6 +4,7 @@
 # b) Подумайте как наделить бота ""интеллектом""
 
 from random import randint
+import time
 
 
 def choose_mode():
@@ -59,28 +60,39 @@ def game(mode, candy):
 
         return take_candy
 
+    def bot_move(candy, can_get):
+        time.sleep(1)
+        if candy == can_get:
+            print(f'Компьютер забрал {candy} конфет')
+            return candy
+        bot_take = candy % (can_get + 1)
+        if bot_take != 0:
+            print(f'Компьютер забрал {bot_take} конфет')
+            return bot_take
+        else:
+            bot_take = randint(1, can_get)
+            print(f'Компьютер забрал {bot_take} конфет')
+            return bot_take
+
     max_get = 28
     while candy != 0:
         current_player = 1 if is_first_player == True else 2
         show_player(mode, current_player)
-        candy -= make_move(candy, max_get)
+        if mode == '1':
+            candy -= make_move(candy, max_get)
+        if mode == '2':
+            if current_player == 1:
+                candy -= make_move(candy, max_get)
+            if current_player == 2:
+                candy -= bot_move(candy, max_get)
 
         is_first_player = not is_first_player
 
-    print(f'\nВыиграл Игрок {current_player}')
+    if mode == '2' and is_first_player:
+        print(f'\nВыиграл Компьютер')
+    else:
+        print(f'\nВыиграл Игрок {current_player}')
 
-    return
-
-
-# ---------------------------------------
-
-
-def pvp(candy):
-
-    return
-
-
-def pve(candy):
     return
 
 
