@@ -37,16 +37,16 @@ def create_polynomial():
 def create_file(array):
     polynomial_file = open('Seminar4/Polynomial.txt', 'a')
 
-    for i in range(0, len(polynomial_array)):
-        if i == len(polynomial_array) - 1:
-            polynomial_file.write(f'{polynomial_array[i]} = 0')
+    for i in range(0, len(array)):
+        if i == len(array) - 1:
+            polynomial_file.write(f'{array[i]} = 0')
             polynomial_file.write('\n')
             polynomial_file.close()
             return
 
-        polynomial_file.write(f'{polynomial_array[i]} + ')
+        polynomial_file.write(f'{array[i]} + ')
 
 
-polynomial_array = create_polynomial()
-print(polynomial_array)
-create_file(polynomial_array)
+array = create_polynomial()
+print(array)
+create_file(array)
