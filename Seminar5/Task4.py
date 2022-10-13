@@ -33,6 +33,7 @@ def decode(line):
 
 file = open('Seminar5/FileTask4.txt')
 string = encode(file.read())
+file.close()
 print(string)
 print(decode(string))
 
