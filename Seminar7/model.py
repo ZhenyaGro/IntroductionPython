@@ -1,4 +1,6 @@
 import csv
+from genericpath import exists
+import os.path
 last_name, first_name, phone_number, description = '', '', '', ''
 
 
@@ -25,15 +27,16 @@ def create_contact(ln, fn, phn, dsc):
     return contact
 
 
-def read_file(path):
-    file = open(path)
-    contacts = file.read()
-    file.close()
-    return contacts
-
-
-def import_contacts():
-    pass
+def import_contacts(path='Seminar7/contacts.csv'):
+    contacts_list = []
+    if (exists(path)):
+        with open(path, 'r') as file:
+            for i in file:
+                contacts_list.append(i.strip().split(','))
+        return contacts_list
+    else:
+        print(f'Не найден файл {path}')
+        return
 
 
 # читаем что получилось

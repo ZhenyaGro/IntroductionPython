@@ -13,12 +13,11 @@ def launch_app():
         contact = model.create_contact(*contact_info)
         view.show_contacts(contact)
     if menu_point == 2:
-        # view.show_contacts(model.read_file())
-        pass
+        contacts_list = model.import_contacts('Seminar7/contacts.csv')
+        if contacts_list:
+            for i in contacts_list:
+                view.show_contacts(i)
     if menu_point == 3:
-        # Import contact
-        pass
-    if menu_point == 4:
         # Export contact
         pass
     if menu_point == -1:
