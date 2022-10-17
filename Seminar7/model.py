@@ -1,6 +1,5 @@
 import csv
-last_name, first_name, phone_number, description, id = '', '', '', '', 0
-contacts_list = {}
+last_name, first_name, phone_number, description = '', '', '', ''
 
 
 def create_contact(ln, fn, phn, dsc):
@@ -8,28 +7,22 @@ def create_contact(ln, fn, phn, dsc):
     global first_name
     global phone_number
     global description
-    global id
-    id += 1
     last_name = ln
     first_name = fn
     phone_number = phn
     description = dsc
 
-    contacts_list.update({f'{id}': {
+    contact = {
         'Фамилия': last_name,
         'Имя': first_name,
         'Телефон': phone_number,
-        'Описание': description}})
+        'Описание': description}
 
     with open('Seminar7/contacts.csv', 'a', newline='') as contacts_file:
         writer = csv.writer(contacts_file, delimiter=' ')
-        writer.writerow(contacts_list.values())
+        writer.writerow(contact.values())
 
-    return {f'{id}': {
-        'Фамилия': last_name,
-        'Имя': first_name,
-        'Телефон': phone_number,
-        'Описание': description}}
+    return contact
 
 
 def read_file(path):

@@ -10,11 +10,11 @@ def launch_app():
         return
     if menu_point == 1:
         contact_info = view.add_contact()
-        model.create_contact(
-            contact_info[0], contact_info[1], contact_info[2], contact_info[3])
-        view.show_contacts(model.contacts_list)
+        contact = model.create_contact(*contact_info)
+        view.show_contacts(contact)
     if menu_point == 2:
-        view.show_contacts(model.read_file())
+        # view.show_contacts(model.read_file())
+        pass
     if menu_point == 3:
         # Import contact
         pass
