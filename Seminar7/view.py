@@ -1,3 +1,4 @@
+from distutils import extension
 import controller
 import model
 
@@ -28,3 +29,23 @@ def add_contact():
     description = input('Описание: ')
 
     return [last_name, first_name, phone_number, description]
+
+
+def select_extension():
+    extension = '.txt'
+
+    try:
+        users_extension = int(
+            input('Выберите расширение файла для экспорта\n1 - ".txt"\n2 - ".csv"\nВыбор: '))
+    except:
+        print('Некорректный ввод')
+        return extension
+
+    if users_extension == 1:
+        return extension
+    if users_extension == 2:
+        extension = '.csv'
+        return extension
+
+    print('Некорректный ввод')
+    return extension

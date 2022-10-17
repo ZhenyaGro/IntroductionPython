@@ -17,10 +17,9 @@ def launch_app():
             for i in contacts_list:
                 view.show_contacts(i)
     if menu_point == 3:
+        extension = view.select_extension()
         contacts_list = model.import_contacts('Seminar7/contacts.csv')
-        model.export_contacts(contacts_list)
-        # Export contact
-        pass
+        model.export_contacts(contacts_list, extension)
     if menu_point == -1:
         sleep(1)
         launch_app()
