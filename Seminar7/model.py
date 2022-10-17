@@ -39,8 +39,16 @@ def import_contacts(path='Seminar7/contacts.csv'):
         return
 
 
-# читаем что получилось
-# with open('Seminar7/contacts.csv', newline='') as contacts_file:
-#     reader = csv.reader(contacts_file, delimiter=' ')
-#     for row in reader:
-#         print(', '.join(row))
+def export_contacts(contacts_list, extension='.txt'):
+    if extension != '.txt' and extension != '.csv':
+        print('Некорректное расширение файла')
+    else:
+        with open(f'Seminar7/exportedContacts{extension}', 'w', encoding='utf-8') as file:
+            for i in contacts_list:
+                for j in range(0, len(i)):
+                    if j == len(i) - 1:
+                        file.write(f'{i[j]}')
+                    else:
+                        file.write(f'{i[j]},')
+                file.write('\n')
+        print(f'Файл "exportedContacts{extension}" сохранен')
