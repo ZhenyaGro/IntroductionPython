@@ -1,17 +1,26 @@
+from audioop import add
+from time import sleep
 import model
-
-contact_list = {}
-
-
-def create_contact(last_n, first_n, phone, desc):
-    contact_list.update(model.contact(
-        last_n, first_n, phone, desc))
+import view
 
 
-def delete_contact(id_contact):
-    contact_list.pop(id_contact)
-
-
-def update_contact(id, last_n, first_n, phone, desc):
-    if id in contact_list.keys():
-        contact_list.update({f'{id}': id, 'Data': temp})
+def launch_app():
+    menu_point = view.menu()
+    if menu_point == 0:
+        return
+    if menu_point == 1:
+        contact_info = view.add_contact()
+        model.create_contact(
+            contact_info[0], contact_info[1], contact_info[2], contact_info[3])
+        view.show_contacts(model.contacts_list)
+    if menu_point == 2:
+        view.show_contacts(model.read_file())
+    if menu_point == 3:
+        # Import contact
+        pass
+    if menu_point == 4:
+        # Export contact
+        pass
+    if menu_point == -1:
+        sleep(1)
+        launch_app()
