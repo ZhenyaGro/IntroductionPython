@@ -66,7 +66,7 @@ def launch_app():
 
         if user_choice == '1':
             show_data()
-            sleep(1)
+            break
 
         elif user_choice == '2':
             cursor.execute('SELECT MAX(id) FROM personal')
