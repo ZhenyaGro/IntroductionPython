@@ -55,6 +55,17 @@ def search_by_lastname(lastname):
     return cursor.fetchmany()
 
 
+def update_salary(salary, id):
+    try:
+        update_query = '''UPDATE personal SET salary = ? WHERE id = ?'''
+        data = (salary, id)
+        cursor.execute(update_query, data)
+        DB.commit()
+        print('Зарплата обновлена')
+    except:
+        print('Не удалось обновить зарплату')
+
+
 def exit():
     return
 
@@ -62,7 +73,7 @@ def exit():
 def launch_app():
     while True:
         user_choice = input(
-            '\nМеню\n1 - Показать базу\n2 - Добавить запись\n3 - Удалить запись\n4 - Найти работника по фамилии\nq - Выход\n')
+            '\nМеню\n1 - Показать базу\n2 - Добавить запись\n3 - Удалить запись\n4 - Найти работника по фамилии\n5 - Обновить зарплату\nq - Выход\n')
 
         if user_choice == '1':
             show_data()
@@ -91,8 +102,18 @@ def launch_app():
             print(search_by_lastname(input('Введите фамилию: ')))
             sleep(1)
 
+        elif user_choice == '5':
+            try:
+                employee_id = int(input('Введите id работника: '))
+                new_salary = int(input('Введите новую зарплату: '))
+            except:
+                print('Некорректный ввод')
+                break
+            update_salary(new_salary, employee_id)
+
         elif user_choice == 'q':
             print('\nВыход\n')
+            cursor.close()
             break
 
         else:
