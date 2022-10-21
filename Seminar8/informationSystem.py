@@ -36,12 +36,12 @@ def show_data():
 
 def add_record(data):
     try:
-        cursor.executemany('INSERT INTO personal VALUES(?,?,?,?,?,?);', data)
+        cursor.execute(
+            f'''INSERT INTO personal VALUES({", ".join(f'"{str(i)}"' if isinstance(i, str) else str(i) for i in data)});''')
         DB.commit()
         print('Запись добавлена')
-    except Exception as e:
-        print(e)
-        #print('Не удалось добавить запись')
+    except:
+        print('Не удалось добавить запись')
 
 
 def delete_record(id):
