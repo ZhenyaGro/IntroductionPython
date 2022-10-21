@@ -18,8 +18,7 @@ data = [(1, 'Иван', 'Иванов', 'Главный инженер', 50000, 
                                                                  'Игорев', 'Инженер', 20000, 8000), (3, 'Олег', 'Олегов', 'Завхоз', 12000, 3000)]
 
 try:
-    cursor.execute(
-        f'INSERT INTO personal VALUES({[", ".join(i) for i in data]});')
+    cursor.execute('INSERT INTO personal VALUES(?,?,?,?,?,?);', data)
     DB.commit()
 except:
     print('Данные уже есть')
