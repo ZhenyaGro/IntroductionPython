@@ -52,7 +52,7 @@ def delete_record(id):
 def search_by_lastname(lastname):
     cursor.execute(
         f'SELECT * FROM personal WHERE last_name LIKE "{lastname}";')
-    return cursor.fetchmany()
+    return cursor.fetchall()
 
 
 def update_salary(salary, id):
@@ -77,7 +77,7 @@ def launch_app():
 
         if user_choice == '1':
             show_data()
-            break
+            sleep(1)
 
         elif user_choice == '2':
             cursor.execute('SELECT MAX(id) FROM personal')
