@@ -13,8 +13,8 @@ def calculate(expression):
     return eval(expression)
 
 
-print(calculate('2+2'))
-print(calculate('1+2*3'))
-print(calculate('1-2*3'))
-print(calculate('1+2*3'))
-print(calculate('(1+2)*3'))
+print(calculate('2+2'))  # 4
+print(calculate('1+2*3'))  # 7
+print(calculate('1-2*3'))  # -5
+print(calculate('1+2*3'))  # 7
+print(calculate('(1+2)*3'))  # 9
