@@ -16,8 +16,10 @@ def cache(func):
             time_start = datetime.datetime.now()
             result = func(i)
             time_end = datetime.datetime.now()
+
             result_cache.append(result)
             time_result = time_end - time_start
+
             log_msg = f'Период: {time_start:%H:%M:%S} - {time_end:%H:%M:%S}; Время: {time_result}; Результат: {result}\n'
             print(log_msg)
             with open('Seminar10/task1_log.log', 'a', encoding='utf-8') as file:
